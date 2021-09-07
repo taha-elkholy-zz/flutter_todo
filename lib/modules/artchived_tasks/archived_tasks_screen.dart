@@ -12,7 +12,9 @@ class ArchivedTasksScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppStates>(
         builder: (context, state) {
-          var tasks = AppCubit.get(context).archivedTasks;
+          var tasks = AppCubit
+              .get(context)
+              .archivedTasks;
           return ConditionalBuilder(
               condition: tasks.length > 0,
               builder: (context) {

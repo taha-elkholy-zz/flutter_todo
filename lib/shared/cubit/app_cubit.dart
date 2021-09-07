@@ -76,19 +76,19 @@ class AppCubit extends Cubit<AppStates> {
     // if database exist it will be opened else it created
     openDatabase('my_app_todo.db', version: 1,
         onCreate: (database, version) async {
-      await database
-          .execute(
+          await database
+              .execute(
               'CREATE TABLE tasks (id INTEGER PRIMARY KEY, title TEXT, date TEXT, time TEXT, status TEXT)')
-          .then((value) {
-        print('Database created successfully');
-      }).catchError((error) {
-        print('Error while create database $error');
-      });
-    }, onOpen: (database) {
-      print('database opened');
-      // get data from database
-      getDataFromDatabase(database);
-    }).then((value) {
+              .then((value) {
+            print('Database created successfully');
+          }).catchError((error) {
+            print('Error while create database $error');
+          });
+        }, onOpen: (database) {
+          print('database opened');
+          // get data from database
+          getDataFromDatabase(database);
+        }).then((value) {
       database = value;
       emit(AppCreateDatabaseState());
     });
@@ -102,7 +102,7 @@ class AppCubit extends Cubit<AppStates> {
     database.transaction((txn) async {
       txn
           .rawInsert(
-              'INSERT INTO tasks(title, date, time, status) VALUES("$title", "$date", "$time", "new")')
+          'INSERT INTO tasks(title, date, time, status) VALUES("$title", "$date", "$time", "new")')
           .then((value) {
         print('$value inserted into database');
         emit(AppInsertIntoDatabaseState());

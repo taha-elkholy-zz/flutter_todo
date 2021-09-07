@@ -12,7 +12,9 @@ class DoneTasksScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppStates>(
         builder: (context, state) {
-          var tasks = AppCubit.get(context).doneTasks;
+          var tasks = AppCubit
+              .get(context)
+              .doneTasks;
           return ConditionalBuilder(
               condition: tasks.length > 0,
               builder: (context) {

@@ -28,7 +28,9 @@ class Home extends StatelessWidget {
     //AppCubit cubit = AppCubit.get(context);
     return BlocProvider(
       // AppCubit()..createDatabase() for create database first thing
-      create: (context) => AppCubit()..createDatabase(),
+      create: (context) =>
+      AppCubit()
+        ..createDatabase(),
       child: BlocConsumer<AppCubit, AppStates>(
         listener: (context, state) {
           if (state is AppInsertIntoDatabaseState) {
@@ -158,9 +160,9 @@ class Home extends StatelessWidget {
                       .then((value) {
                     // when close the bottom sheet
                     // change the state of bottom sheet from open to closed
-                        cubit.changeBottomSheetState(
-                            isBottomSheetShown: false, fabIcon: Icons.edit);
-                      });
+                    cubit.changeBottomSheetState(
+                        isBottomSheetShown: false, fabIcon: Icons.edit);
+                  });
 
                   // change the state of bottom sheet from closed to open
                   cubit.changeBottomSheetState(
@@ -170,7 +172,8 @@ class Home extends StatelessWidget {
             ),
             body: ConditionalBuilder(
                 condition: state is AppGetDatabaseLoadingState,
-                builder: (context) => Center(
+                builder: (context) =>
+                    Center(
                       child: CircularProgressIndicator(),
                     ),
                 fallback: (context) => cubit.screens[cubit.currentIndex]),

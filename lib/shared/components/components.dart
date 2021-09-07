@@ -31,7 +31,8 @@ Widget defaultTextFormField({
       validator: validator,
     );
 
-Widget buildTaskItem(BuildContext context, Map model) => Dismissible(
+Widget buildTaskItem(BuildContext context, Map model) =>
+    Dismissible(
       key: Key(model['id'].toString()),
       child: Padding(
         padding: const EdgeInsets.all(20.0),

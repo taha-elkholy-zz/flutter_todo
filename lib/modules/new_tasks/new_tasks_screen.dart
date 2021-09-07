@@ -12,7 +12,9 @@ class NewTasksScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppStates>(
         builder: (context, state) {
-          var tasks = AppCubit.get(context).newTasks;
+          var tasks = AppCubit
+              .get(context)
+              .newTasks;
           return ConditionalBuilder(
               condition: tasks.length > 0,
               builder: (context) {
